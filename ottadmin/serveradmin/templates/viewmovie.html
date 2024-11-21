@@ -1,0 +1,34 @@
+{% extends 'layout/home-layout.html' %}
+{% block 'content' %}
+<div>
+    <div class="mb-5">
+        <h1 class="display-2 text-center text-white my-3">View Movie</h1>
+        <div class="container bg-white p-5">
+            <div class="row mb-2">
+                <div class="col-sm-4 text-dark text-right">Movie Title: </div>
+                <div class="col-sm-8" id="name">{{ movie.name }}</div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-sm-4 text-dark text-right">Description: </div>
+                <div class="col-sm-8" id="description">{{ movie.description }}</div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-4 text-dark text-right">Thumbnail: </div>
+              <a href="{{ movie.thumbnail.url }}" target="_blank">Current File</a>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-4 text-dark text-right">Video: </div>
+                <a href="{{ movie.video_url.url }}" target="_blank">Current File</a>
+            </div>
+            <div class="d-flex justify-content-center p-4">
+                <a class="btn btn-outline-dark" href="{% url 'movies' %}">
+                    Close
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

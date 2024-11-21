@@ -1,0 +1,43 @@
+.nav-pills .nav-link.active {
+  color: #fff;
+  background-color: #12cdd9;
+}
+
+.navbar {
+  box-shadow: 0px 0px 15px black;
+}
+
+.divider {
+  display: block;
+  border-left: 1px solid #ccc;
+  height: 40px;
+}
+
+@media (max-width: 587px) {
+  .divider {
+    display: none;
+  }
+}
+
+.modallogout{
+  display: block;
+  backdrop-filter: blur(10px);
+}
+
+.modallogout2{
+  display: block;
+  animation: mymove 0.5s ease-out;
+}
+
+@keyframes mymove {
+  from {top: -300px;}
+  to {top: -200px;}
+}
+
+.modallogoutcontent{
+  background-color: #343a40;
+}
+
+h4{
+  margin: 0px;
+}

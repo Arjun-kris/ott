@@ -1,0 +1,65 @@
+{% extends 'layout/app-layout.html'%}
+{% block 'content1' %}
+<div>
+  <div class="container col-ls-6">
+   <h1 class="display-1 text-center text-light mt-5">OTT Admin Login</h1>
+    <div class="container col-md-6 mt-5 p-4 rounded">
+      <div class="mb-2">
+        <form id="loginForm">
+          <input type="text" id="username" name="username" class="form-control bg-light mb-3" placeholder="Enter Username">
+          <input type="password" id="password" name="password" class="form-control bg-light mb-3" placeholder="Enter Password">
+          <button type="submit" class="btn btn-light" data-toggle="modal" data-target="#Modal2">Login</button>
+          <div class="modal fade" style="top: -200px;" id="Modal2">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <div class="modal-body p-5">
+                      <h3 class='text-center text-dark'>Login success !!!</h3>
+                  </div>
+              </div>
+          </div>
+        </form>
+        <p id="errorMessage" style="color: red; display: none;">Invalid credentials. Please try again.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function clear () {
+    localStorage.removeItem('authToken');
+  }
+  clear();
+
+
+  $(document).ready(function () {
+      $('#loginForm').submit(function (e) {
+          e.preventDefault();
+          var username = $('#username').val();
+          var password = $('#password').val();
+          var csrfToken = $('meta[name="csrf-token"]').attr('content')
+          $.ajax({
+              url: '/login/',
+              type: 'POST',
+              data: {
+                  username: username,
+                  password: password
+              },
+              headers: {
+                  'X-CSRFToken': csrfToken
+              },
+              success: function(response) {
+                  if (response.token) {
+                      localStorage.setItem('authToken', response.token);
+                      window.location.href = '/movies/';
+                  }
+              },
+              error: function(xhr, status, error) {
+                  console.log(xhr.responseJSON);
+                  if (xhr.responseJSON && xhr.responseJSON.error) {
+                      $('#errorMessage').text(xhr.responseJSON.error).show();
+                  }
+              }
+          });
+      });
+  });
+</script>
+{% endblock %}

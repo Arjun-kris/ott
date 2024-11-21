@@ -1,0 +1,44 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1.0s ease-in-out;
+}
+
+.login{
+    box-shadow: 0px 0px 0px whitesmoke;
+    transition: transform 250ms;
+}
+
+.login:hover{
+    box-shadow: 2px 2px 25px whitesmoke;
+    transform: translateY(-10px);
+}
+
+.btn-outline-custom {
+    background-color: transparent;
+    color: #12CDD9;
+    border: 2px solid #12CDD9;
+}
+
+.btn-outline-custom:hover {
+    background-color: #12CDD9;
+    color: white;
+}
+
+.head{
+    padding-left: 230px;
+}
+
+@media (max-width: 768px) {
+    .head{
+        padding-top: 50px;
+        padding-left: 0px;
+    }
+}

@@ -1,0 +1,64 @@
+{% extends 'layout/home-layout.html' %}
+{% block 'content' %}
+<div>
+    <div class="mb-5">
+        <h1 class="display-2 text-center text-white my-3">Edit Movies</h1>
+        <div class="container bg-white p-5">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label text-dark text-sm-right">Movie Title: </label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="name" name="name" value="{{ movie.name }}" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="description" class="col-sm-4 col-form-label text-dark text-sm-right">Description: </label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" id="description" name="description" style="height: 100px">{{ movie.description }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="thumbnail" class="col-sm-4 col-form-label text-dark text-sm-right">Thumbnail: </label>
+                    <div class="col-sm-8">
+                        <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept=".jpg, .png" value="{{ movie.thumbnail }}" />
+                        {% if movie.thumbnail %}
+                            <a href="{{ movie.thumbnail.url }}" target="_blank">Current File</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="video_url" class="col-sm-4 col-form-label text-dark text-sm-right">Video File: </label>
+                    <div class="col-sm-8">
+                        <input type="file" class="form-control" id="video_url" name="video_url" accept=".mp4" value="{{ movie.video_url }}"  />
+                        {% if movie.video_url %}
+                            <a href="{{ movie.video_url.url }}" target="_blank">Current File</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center p-4">
+                    <button type="submit" class="btn btn-outline-success mr-3" onclick="showModal()">Update</button>
+                    <a href="{% url 'movies' %}" class="btn btn-outline-dark">Close</a>
+                </div>
+            </form>
+        </div>
+        <div class="modal fade" style="top: -200px;" id="Modaledit">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <div class="modal-body p-5">
+                      <h3 class='text-center text-dark'>Data Updated !!!</h3>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showModal() {
+        $('#Modaledit').modal('show');
+        setTimeout(function() {
+            $('#Modaledit').modal('hide');
+        }, 2000);
+      }
+</script>
+{% endblock %}

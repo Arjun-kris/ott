@@ -1,0 +1,25 @@
+
+.bodybg {
+    background-image: url('./assets/movies4.gif');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    margin: 0; 
+}
+
+.btn-custom {
+    background-color: #12CDD9;
+    color: white;
+}
+
+.btn-outline-custom {
+    background-color: transparent;
+    color: #12CDD9;
+    border: 2px solid #12CDD9;
+}
+
+.btn-outline-custom:hover {
+    background-color: #12CDD9;
+    color: white;
+}

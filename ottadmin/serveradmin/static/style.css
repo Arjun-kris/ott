@@ -1,0 +1,15 @@
+.divider {
+    display: block;
+    border-left: 1px solid black;
+  }
+  
+  @media (max-width: 587px) {
+    .divider {
+      display: none;
+    }
+  }
+  
+
+.table2{
+    border-left: 1px solid black;
+}

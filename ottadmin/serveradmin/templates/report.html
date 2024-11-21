@@ -1,0 +1,27 @@
+{% extends 'layout/home-layout.html' %}
+
+{% block 'content' %}
+<div>
+    <div class="mb-5">
+      <h1 class="display-2 text-center text-white my-3">View Count Report</h1>
+      <div class="container-fluid">
+        <table class="table table-dark table-bordered">
+          <thead>
+            <tr class="bg-light text-dark">
+              <th scope="col">Movies</th>
+              <th scope="col">View count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for movie in movies %}
+            <tr>
+              <td>{{ movie.name }}</td>
+              <td>{{ movie.view_count }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+{% endblock %}
